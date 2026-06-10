@@ -1,0 +1,344 @@
+@import url('https://fonts.googleapis.com/css2?family=Oxanium:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&family=Vollkorn:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
+
+@font-face {
+  font-family: 'Ethnocentric';
+  src: url('/fonts/Ethnocentric-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply text-primary;
+    background: #000000;
+    min-height: 100vh;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
+  }
+
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+    cursor: pointer;
+  }
+}
+
+@layer utilities {
+  .animate-gradient {
+    background-size: 200% 200%;
+    animation: gradient 3s ease infinite;
+  }
+
+  @keyframes gradient {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  .animate-pulse-slow {
+    animation: pulse-slow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  @keyframes pulse-slow {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
+
+  .animate-slide-up {
+    animation: slide-up 0.6s ease-out;
+  }
+
+  @keyframes slide-up {
+    from {
+      transform: translateY(30px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.8s ease-out;
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .animate-scale-in {
+    animation: scale-in 0.5s ease-out;
+  }
+
+  @keyframes scale-in {
+    from {
+      transform: scale(0.9);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  .backdrop-blur-xs {
+    backdrop-filter: blur(2px);
+  }
+
+  .text-shadow-glow {
+    text-shadow: 0 0 8px rgba(10, 124, 140, 0.2),
+                 0 0 16px rgba(10, 124, 140, 0.12);
+  }
+
+  .box-shadow-glow {
+    box-shadow: 0 0 8px rgba(10, 124, 140, 0.12),
+                0 0 16px rgba(10, 124, 140, 0.08);
+  }
+}
+
+.delay-1000 {
+  animation-delay: 1s;
+}
+
+.delay-2000 {
+  animation-delay: 2s;
+}
+
+/* Header notch clip-path — desktop uses original shape, mobile uses raised + steeper variant */
+.header-notch-clip {
+  clip-path: url(#header-top-notch-mobile);
+}
+@media (min-width: 768px) {
+  .header-notch-clip {
+    clip-path: url(#header-top-notch);
+  }
+}
+
+/* Notch contour SVG lines — show correct variant per breakpoint */
+.notch-contour-desktop { display: none; }
+.notch-contour-mobile  { display: block; }
+@media (min-width: 768px) {
+  .notch-contour-desktop { display: block; }
+  .notch-contour-mobile  { display: none; }
+}
+
+/* ============================================================
+   HEADER LOCK — DO NOT MODIFY
+   Current correct Header typography and layout are protected here.
+   Future portfolio/services/gallery edits must not touch this Header.
+   ============================================================ */
+
+/* --- Header geometry / notch clip-path (already above, mirrored here as reference lock) ---
+   Desktop notch clip: url(#header-top-notch)
+   Mobile  notch clip: url(#header-top-notch-mobile)
+   Header height: 88px
+   Top black bar: 5px
+   Header z-index: 9999
+   Top bar z-index: 10000
+   Mobile side buttons z-index: 10001
+*/
+
+/* --- Header font lock ---
+   Font family:   Ethnocentric (local /fonts/Ethnocentric-Regular.otf)
+   Logo row 1 desktop:  font-size 1.45vw, letter-spacing 0.35em, color #ffffff
+   Logo row 2 desktop:  font-size 2.6vw,  letter-spacing 0.9em,  color #0a7c8c, scaleX(1.25) translateX(20px)
+   Logo row 1 mobile:   font-size 3.8vw,  letter-spacing 0.12em, color #ffffff
+   Logo row 2 mobile:   font-size 5.8vw,  letter-spacing 0.32em, color #0a7c8c, scaleX(1.1) translateX(6px)
+*/
+
+/* --- Nav link lock ---
+   font-size: 11px (text-[11px])
+   font-weight: 800 (font-extrabold)
+   letter-spacing: 0.25em (tracking-[0.25em])
+   text-transform: uppercase
+   line-height: 1 (leading-none)
+   padding: 10px 40px (py-2.5 px-10)
+   background rest:   #01414a (--surface)  or #01414a/30 backdrop-blur-sm
+   color rest:        #F5F1ED (--primary / text-primary)
+   color active:      #ffffff
+   background active: #01414a + outline 1px rgba(255,255,255,0.4)
+*/
+
+/* --- Mobile menu nav link lock ---
+   font-size: 13px
+   font-weight: 800 (font-extrabold)
+   letter-spacing: 0.3em
+   text-transform: uppercase
+   padding-top/bottom: 16px (py-4)
+   border-bottom: 1px solid rgba(255,255,255,0.08)
+   color rest:   rgba(255,255,255,0.8)
+   color active: #0a7c8c (text-accent)
+*/
+
+/* --- Mobile side button lock ---
+   Width: 42px, Height: 80px, top: 8px
+   Left clip:  polygon(0 0, 100% 27%, 100% 73%, 0 100%)
+   Right clip: polygon(0 27%, 100% 0, 100% 100%, 0 73%)
+   Background: #000000
+   Icon color: #00c4d4
+   Contour stroke: #00c4d4 (gradient, fades at top/bottom)
+*/
+
+/* --- Notch contour stroke lock ---
+   Stroke color: #00c4d4 (linear gradient, fades at edges)
+   Stroke width: 0.8px (vector-effect non-scaling-stroke)
+   Opacity: 0 when not scrolled, 1 when scrolled (transition 0.35s ease)
+*/
+
+/* Explicit header-lock nav link classes — used by UnifiedHeader only */
+.header-nav-link {
+  padding: 10px 40px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  line-height: 1;
+  transition: all 0.15s ease;
+  display: inline-block;
+  position: relative;
+}
+
+/* Header nav: scrolled-state base (not active) */
+.header-nav-link--scrolled {
+  background-color: #01414a;
+  color: #F5F1ED;
+}
+.header-nav-link--scrolled:hover {
+  color: #ffffff;
+  outline: 1px solid rgba(255, 255, 255, 0.20);
+}
+
+/* Header nav: transparent-state base (not active, top of page) */
+.header-nav-link--transparent {
+  background-color: rgba(1, 65, 74, 0.30);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  color: #F5F1ED;
+}
+.header-nav-link--transparent:hover {
+  color: #ffffff;
+}
+
+/* Header nav: active page */
+.header-nav-link--active {
+  background-color: #01414a;
+  color: #ffffff;
+  outline: 1px solid rgba(255, 255, 255, 0.40);
+}
+
+/* Header logo — Ethnocentric font lock */
+.header-logo-font {
+  font-family: 'Ethnocentric', sans-serif;
+  text-transform: uppercase;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+/* Desktop logo top row (DETAILING / GARAGE) */
+.header-logo-top-desktop {
+  font-size: 1.45vw;
+  letter-spacing: 0.35em;
+  color: #ffffff;
+}
+
+/* Desktop logo main row (DANIEL) */
+.header-logo-main-desktop {
+  font-size: 2.6vw;
+  letter-spacing: 0.9em;
+  color: #0a7c8c;
+  display: block;
+  width: 100%;
+  text-align: center;
+  transform: scaleX(1.25) translateX(20px);
+  transform-origin: center;
+}
+
+/* Mobile logo top row (DETAILING / GARAGE) */
+.header-logo-top-mobile {
+  font-size: 3.8vw;
+  letter-spacing: 0.12em;
+  color: #ffffff;
+}
+
+/* Mobile logo main row (DANIEL) */
+.header-logo-main-mobile {
+  font-size: 5.8vw;
+  letter-spacing: 0.32em;
+  color: #0a7c8c;
+  display: block;
+  width: 100%;
+  text-align: center;
+  transform: scaleX(1.1) translateX(6px);
+  transform-origin: center;
+}
+
+/* Mobile overlay menu nav link lock */
+.header-mobile-nav-link {
+  width: 100%;
+  text-align: center;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  transition: all 0.2s ease;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  display: block;
+}
+.header-mobile-nav-link--rest   { color: rgba(255, 255, 255, 0.80); }
+.header-mobile-nav-link--rest:hover { color: #ffffff; }
+.header-mobile-nav-link--active { color: #0a7c8c; }
+
+/* ============================================================
+   END HEADER LOCK
+   ============================================================ */
+
+/* Teal gradient section divider */
+.divider-teal {
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(10, 124, 140, 0.10) 18%,
+    rgba(10, 124, 140, 0.70) 50%,
+    rgba(10, 124, 140, 0.10) 82%,
+    transparent 100%
+  );
+}

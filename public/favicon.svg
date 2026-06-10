@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Background: brand dark teal -->
+  <rect width="512" height="512" fill="#01414a"/>
+  <!-- Inner accent border -->
+  <rect x="18" y="18" width="476" height="476" fill="none" stroke="#0a7c8c" stroke-width="6"/>
+  <!-- "D" letterform in Ethnocentric style — bold geometric sans -->
+  <text
+    x="256"
+    y="360"
+    font-family="Arial Narrow, Arial, sans-serif"
+    font-size="340"
+    font-weight="900"
+    text-anchor="middle"
+    fill="#ffffff"
+    letter-spacing="-10"
+  >D</text>
+  <!-- Teal accent rule below letter -->
+  <rect x="136" y="398" width="240" height="5" fill="#0a7c8c"/>
+</svg>
